@@ -12,7 +12,7 @@ config :mix_tasks_manager,
 # Configures the endpoint
 config :mix_tasks_manager, MixTasksManager.Web.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "2U2VlMmX7vqmtB9AyXgtGEB2S2TZzZZowhzJQGjN+nWHDzu6g1ipvswImcgT85KN",
+  secret_key_base: "zl8d2SzRgn20IkQ8G2lSLRngPzYri/TcJLnCM9ta9hwZmBQ8aJA11enyEe5hzQLJ",
   render_errors: [view: MixTasksManager.Web.ErrorView, accepts: ~w(html json)],
   pubsub: [name: MixTasksManager.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -21,6 +21,13 @@ config :mix_tasks_manager, MixTasksManager.Web.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+config :ueberauth, Ueberauth,
+  providers: [github: { Ueberauth.Strategy.Github, [] }]
+
+config :ueberauth, Ueberauth.Strategy.Github.OAuth,
+  client_id: "",
+  client_secret: ""
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
