@@ -5,7 +5,7 @@ defmodule MixTasksManager.GithubAuth do
   alias Ueberauth.Auth
 
   def create_user(%Auth{} = auth) do
-    {:ok, %{id: auth.uid, name: name_from_auth(auth), avatar: auth.info.image}}
+    {:ok, %{id: auth.uid, name: name_from_auth(auth), avatar: auth.info.urls.avatar_url}}
   end
 
   defp name_from_auth(auth) do
