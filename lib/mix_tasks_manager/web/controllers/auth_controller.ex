@@ -25,7 +25,7 @@ defmodule MixTasksManager.AuthController do
   end
 
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
-    case UserFromAuth.find_or_create(auth) do
+    case MixTasksManager.GithubAuth.create_user(auth) do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Successfully authenticated.")
